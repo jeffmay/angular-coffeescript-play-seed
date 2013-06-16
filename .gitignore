@@ -1,6 +1,17 @@
+bin
 logs
 dist
 project/project
 project/target
 target
 tmp
+
+# IDE project files
+.idea
+.idea_modules
+.cache
+.classpath
+.project
+.settings
+.target
+
