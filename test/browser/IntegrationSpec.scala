@@ -1,4 +1,4 @@
-package test
+package browser
 
 import org.specs2.mutable._
 
@@ -7,11 +7,8 @@ import play.api.test.Helpers._
 
 class IntegrationSpec extends Specification {
   
-  /*
   "Application" should {
 
-    
-    
     "work from within a browser" in {
         
       running(TestServer(3333), HTMLUNIT) { browser =>
@@ -58,12 +55,8 @@ class IntegrationSpec extends Specification {
         
         browser.$("h1").first.getText must equalTo("Configure your 'Hello world':")
 
-         
       }
     }
-
-    
   }
-  */
-  
+
 }
