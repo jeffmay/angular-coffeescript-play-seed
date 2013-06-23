@@ -1,10 +1,18 @@
+# General
 bin
+tmp
+
+# SBT Builds
+project/target
+project/project
+
+# SBT Projects
 logs
 dist
-project/project
-project/target
 target
-tmp
+*/logs
+*/dist
+*/target
 
 # IDE project files
 .idea
