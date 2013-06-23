@@ -16,19 +16,12 @@ object WebModule extends BaseModule {
   )
 
   val libraries = Seq(
+    Libraries.WebJars.angular,
+    Libraries.WebJars.requireJs,
+    Libraries.WebJars.play,
     Libraries.specs2 % "test",
     Libraries.mockito % "test"
   )
-
-  val appName = "angular-seed-play"
-  val appVersion = "1.0-SNAPSHOT"
-
-  val appDependencies = Seq(
-   Libraries.WebJars.angular,
-   "org.webjars" % "requirejs" % "2.1.1",
-   "org.webjars" % "webjars-play" % "2.1.0-1")
-
-
 
   def project = baseProject
 
