@@ -2,6 +2,9 @@
 bin
 tmp
 
+# Play
+RUNNING_PID
+
 # SBT Builds
 project/target
 project/project
