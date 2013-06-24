@@ -16,7 +16,7 @@ object WebModule extends BaseModule {
   )
 
   val libraries = Seq(
-    Libraries.WebJars.angular,
+    Libraries.WebJars.angularJs,
     Libraries.WebJars.requireJs,
     Libraries.WebJars.play,
     Libraries.specs2 % "test",

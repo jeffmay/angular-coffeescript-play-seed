@@ -1,0 +1,36 @@
+
+# TODO: Add documentation and make this configurable
+
+fs            = require 'fs'
+{print}       = require 'util'
+{spawn, exec} = require 'child_process'
+CoffeeScript  = require (__dirname + '/node_modules/coffee-script')
+
+executable =
+  coffee: (__dirname + '/node_modules/coffee-script/bin/coffee')
+
+
+build = (watch, callback) ->
+  if typeof watch is 'function'
+    callback = watch
+    watch = false
+
+  options = ['-o', 'public/js', '-c', 'src/main/coffee']
+  options.unshift '-w' if watch
+
+  coffee = spawn executable.coffee, options
+  coffee.cmd = [executable.coffee, options...].join(" ")
+  coffee.stdout.on 'data', (data) ->
+    print coffee.cmd
+    print data.toString()
+  coffee.stderr.on 'data', (data) ->
+    print coffee.cmd
+    print data.toString()
+  coffee.on 'exit', (status) -> callback?() if status is 0
+
+task 'build', 'Compile CoffeeScript source files', ->
+  build false
+
+task 'watch', 'Recompile CoffeeScript source files when modified', ->
+  build true
+

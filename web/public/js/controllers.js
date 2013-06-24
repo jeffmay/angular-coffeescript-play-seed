@@ -2,10 +2,9 @@
 (function() {
   'use strict';
   define(function() {
-    controllers.MyCtrl1 = function() {};
-    controllers.MyCtrl1.$inject = [];
-    controllers.MyCtrl2 = function() {};
-    controllers.MyCtrl2.$inject = [];
+    var controllers;
+    controllers = {};
+    controllers.Board = function() {};
     return controllers;
   });
 

@@ -4,7 +4,7 @@ object Libraries {
 
   object WebJars {
 
-    lazy val angular = "org.webjars" % "angularjs" % "1.1.5"
+    lazy val angularJs = "org.webjars" % "angularjs" % "1.1.5"
 
     lazy val play = "org.webjars" % "webjars-play" % "2.1.0-1"
 

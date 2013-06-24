@@ -8,16 +8,12 @@
   require(['angular', './controllers', './directives', './filters', './services'], function(angular, controllers) {
     angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).config([
       '$routeProvider', function($routeProvider) {
-        $routeProvider.when('/view1', {
-          templateUrl: 'partials/partial1.html',
-          controller: controllers.MyCtrl1
-        });
-        $routeProvider.when('/view2', {
-          templateUrl: 'partials/partial2.html',
-          controller: controllers.MyCtrl2
+        $routeProvider.when('/board', {
+          templateUrl: 'partials/board.html',
+          controller: controllers.Board
         });
         return $routeProvider.otherwise({
-          redirectTo: '/view1'
+          redirectTo: '/board'
         });
       }
     ]);
