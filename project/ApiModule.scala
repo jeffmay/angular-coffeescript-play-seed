@@ -22,7 +22,7 @@ object ApiModule extends BaseModule {
     Libraries.mockito % "test"
   )
 
-  def project = baseProject
+  lazy val project = baseProject
 
   override def baseProject = play.Project(moduleName, moduleVersion, libraries, file(location), moduleSettings)
 

@@ -6,18 +6,14 @@ object MyDefaults {
     Defaults.defaultSettings ++ Seq (
       organization := "jeffmay.me",
       version      := Versions.mine,
-      scalaVersion := Versions.scala
-    ) ++ Seq (
+      scalaVersion := Versions.scala,
       scalacOptions += "-feature",
       scalacOptions += "-unchecked",
-      scalacOptions += "-deprecation"
-    ) ++ Seq (
+      scalacOptions += "-deprecation",
       resolvers ++= Seq(
         Resolver.sbtPluginRepo("releases"),
         Resolver.sonatypeRepo("snapshots"),
         Resolver.sonatypeRepo("releases")
-//        "snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
-//        "releases"  at "http://oss.sonatype.org/content/repositories/releases"
       )
     )
 }

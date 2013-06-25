@@ -1,6 +1,6 @@
+import coffeescript.Plugin.{CoffeeKeys, coffeeSettings}
 import sbt._
 import Keys._
-
 
 object WebModule extends BaseModule {
 
@@ -12,8 +12,11 @@ object WebModule extends BaseModule {
 
   def settings = Seq(
     // Add your own project settings here
-    testOptions in Test += Tests.Argument("junitxml", "console")
-  )
+    testOptions in Test += Tests.Argument("junitxml", "console"),
+
+    (resourceManaged in (Compile, CoffeeKeys.coffee)) <<= (crossTarget in Compile)(_ / "src" / "main" / "coffee")
+
+  ) ++ coffeeSettings
 
   val libraries = Seq(
     Libraries.WebJars.angularJs,
@@ -23,7 +26,7 @@ object WebModule extends BaseModule {
     Libraries.mockito % "test"
   )
 
-  def project = baseProject
+  lazy val project = baseProject
 
   override def baseProject = play.Project(moduleName, moduleVersion, libraries, file(location), moduleSettings)
 

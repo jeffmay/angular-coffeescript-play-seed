@@ -17,6 +17,9 @@ target
 */dist
 */target
 
+# Node Build
+node_modules
+
 # IDE project files
 .idea
 .idea_modules
