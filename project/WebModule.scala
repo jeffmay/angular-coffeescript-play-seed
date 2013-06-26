@@ -1,6 +1,6 @@
 import coffeescript.Plugin.{CoffeeKeys, coffeeSettings}
 import sbt._
-import Keys._
+import sbt.Keys._
 
 object WebModule extends BaseModule {
 
@@ -10,13 +10,10 @@ object WebModule extends BaseModule {
 
   val location = "web"
 
-  def settings = Seq(
+  def settings = coffeeSettings ++ Seq(
     // Add your own project settings here
-    testOptions in Test += Tests.Argument("junitxml", "console"),
-
-    (resourceManaged in (Compile, CoffeeKeys.coffee)) <<= (crossTarget in Compile)(_ / "src" / "main" / "coffee")
-
-  ) ++ coffeeSettings
+    testOptions in Test += Tests.Argument("junitxml", "console")
+  )
 
   val libraries = Seq(
     Libraries.WebJars.angularJs,
@@ -28,6 +25,15 @@ object WebModule extends BaseModule {
 
   lazy val project = baseProject
 
-  override def baseProject = play.Project(moduleName, moduleVersion, libraries, file(location), moduleSettings)
+  override def baseProject = play
+    .Project(moduleName, moduleVersion, libraries, file(location), moduleSettings)
+    .settings(
+      // where coffee task is allowed to manage resources
+      sourceManaged in (Compile, CoffeeKeys.coffee) <<= (baseDirectory in Compile)(_ / "public"),
+      // where coffee task reads source files
+      sourceDirectory in (Compile, CoffeeKeys.coffee) <<= (sourceDirectory in Compile)(_ / "assets" / "javascripts"),
+      // where coffee task compiles javascript
+      resourceManaged in (Compile, CoffeeKeys.coffee) <<= (sourceManaged in (Compile, CoffeeKeys.coffee))(_ / "js")
+    )
 
 }
