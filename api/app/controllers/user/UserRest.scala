@@ -2,12 +2,11 @@ package controllers.user
 
 import models.user.User
 import play.api.libs.json.Json._
-import play.api.mvc.Action
+import play.api.mvc.{Controller, Action}
 import javax.inject.Singleton
-import controllers.RestController
 
 @Singleton
-class UserRest extends RestController {
+class UserRest extends Controller {
 
   import models.user.Serializers._
 

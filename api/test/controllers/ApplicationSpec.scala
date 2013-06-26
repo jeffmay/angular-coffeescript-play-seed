@@ -15,7 +15,7 @@ class ApplicationSpec extends Specification {
       }
     }
     
-    "render an empty form on index" in {
+    "render an index page" in {
       running(FakeApplication()) {
         val home = route(FakeRequest(GET, "/")).get
         
@@ -24,21 +24,11 @@ class ApplicationSpec extends Specification {
       }
     }
     
-    "send BadRequest on form error" in {
+    "mention documentation on index page" in {
       running(FakeApplication()) {
-        val home = route(FakeRequest(GET, "/hello?name=Bob&repeat=xx")).get
+        val home = route(FakeRequest(GET, "/")).get
         
-        status(home) must equalTo(BAD_REQUEST)
-        contentType(home) must beSome.which(_ == "text/html")
-      }
-    }
-    
-    "say hello" in {
-      running(FakeApplication()) {
-        val home = route(FakeRequest(GET, "/hello?name=Bob&repeat=10")).get
-        
-        status(home) must equalTo(OK)
-        contentType(home) must beSome.which(_ == "text/html")
+        contentAsString(home) must contain ("documentation")
       }
     }
     
