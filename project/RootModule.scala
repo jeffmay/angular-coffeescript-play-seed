@@ -15,7 +15,7 @@ object RootModule extends BaseModule {
 
   def settings = coffeeSettings
 
-  override def baseProject = play.Project(moduleName, moduleVersion, libraries, file(location), moduleSettings)
+  override def baseProject = Project(moduleName, file(location), settings = moduleSettings)
     .aggregate(
       ApiModule.project,
       WebModule.project

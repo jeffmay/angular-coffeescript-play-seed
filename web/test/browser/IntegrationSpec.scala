@@ -5,6 +5,11 @@ import play.api.test.Helpers._
 import play.api.test._
 
 
+/**
+ * All browser-based feature specifications should live in the browser package.
+ *
+ * This is just a basic test that the body of the index page loads.
+ */
 class IntegrationSpec extends Specification {
   
   "Home page" should {

@@ -28,12 +28,10 @@ object WebModule extends BaseModule {
   override def baseProject = play
     .Project(moduleName, moduleVersion, libraries, file(location), moduleSettings)
     .settings(
-      // where coffee task is allowed to manage resources
-      sourceManaged in (Compile, CoffeeKeys.coffee) <<= (baseDirectory in Compile)(_ / "public"),
       // where coffee task reads source files
-      sourceDirectory in (Compile, CoffeeKeys.coffee) <<= (sourceDirectory in Compile)(_ / "assets" / "javascripts"),
+      sourceDirectory in (Compile, CoffeeKeys.coffee) <<= (sourceDirectory in Compile)(_ / "coffee"),
       // where coffee task compiles javascript
-      resourceManaged in (Compile, CoffeeKeys.coffee) <<= (sourceManaged in (Compile, CoffeeKeys.coffee))(_ / "js")
+      resourceManaged in (Compile, CoffeeKeys.coffee) <<= baseDirectory (_ / "public" / "js")
     )
 
 }
