@@ -8,11 +8,11 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 resolvers += Resolver.url("sbt-plugin-releases",
   new URL("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)
 
-// CoffeeScript compiler plugin
-addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.3")
-
 // Use the Play sbt plugin for Play projects
 addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
+
+// CoffeeScript compiler plugin
+addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.3")
 
 // IDE plugins
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.2.0")
