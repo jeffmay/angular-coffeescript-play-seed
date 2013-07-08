@@ -11,9 +11,6 @@ resolvers += Resolver.url("sbt-plugin-releases",
 // Use the Play sbt plugin for Play projects
 addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
 
-// CoffeeScript compiler plugin
-addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.3")
-
 // IDE plugins
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.2.0")
 
