@@ -4,13 +4,13 @@
 
 # Obtain require.js with built-in knowledge of how webjars resources can be
 # resolved
-GET     /lib/require.js             controllers.WebJarAssets.requirejs
+GET     /javascripts/require.js     controllers.WebJarAssets.requirejs
 
 # Enable webjar based resources to be returned
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
 
 # Home page
-GET     /                           controllers.Assets.at(path="/public", file="index.html")
+GET     /                           controllers.Application.index
 
 # Map the JS resource paths
 GET     /*file                      controllers.Assets.at(path="/public", file)

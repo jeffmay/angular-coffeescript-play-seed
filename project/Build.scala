@@ -1,8 +1,7 @@
-import coffeescript.Plugin.{CoffeeKeys, coffeeSettings}
 import sbt._
 import sbt.Keys._
 
-object ApplicationBuild extends Build {
+object Build extends Build {
 
   val appName = "righttrack"
   val appVersion = "0.1"
@@ -19,14 +18,5 @@ object ApplicationBuild extends Build {
   )
 
   val main = play.Project(appName, appVersion, appDependencies)
-    // Default coffee settings
-    .settings(coffeeSettings: _*)
-    // Overrides for coffee settings
-    .settings(
-      // where coffee task reads source files
-      sourceDirectory in (Compile, CoffeeKeys.coffee) <<= (sourceDirectory in Compile)(_ / "coffee"),
-      // where coffee task compiles javascript
-      resourceManaged in (Compile, CoffeeKeys.coffee) <<= baseDirectory (_ / "public" / "js")
-    )
 
 }
